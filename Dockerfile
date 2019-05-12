@@ -5,6 +5,7 @@ FROM kalilinux/kali-linux-docker
     RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get install -y \
      exploitdb \
      exploitdb-bin-sploits \
+     metasploit-framework \
      git \
      gdb \
      gobuster \
