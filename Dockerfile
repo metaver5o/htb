@@ -39,14 +39,16 @@ FROM kalilinux/kali-linux-docker
 # Update ENV
     ENV PATH=$PATH:/opt/powersploit
 
-# adding Marco
+# adding user Marco
     RUN useradd -ms /bin/bash  marco
     RUN mkdir -p /home/marco/.ssh/
     RUN curl https://github.com/mmatoscom.keys > /home/marco/.ssh/authorized_keys
     RUN usermod -aG sudo marco
 
 # Set entrypoint and working directory
-    WORKDIR /root/
+#   WORKDIR /root/
+    WORKDIR /home/marco/
+    USER marco
 
 # Indicate we want to expose ports 80 and 443
     EXPOSE 80/tcp 443/tcp
