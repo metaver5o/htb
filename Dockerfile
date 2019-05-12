@@ -21,7 +21,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get i
 # Create known_hosts for git cloning
 RUN touch /root/.ssh/known_hosts
 # Add host keys
-RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
+# RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 # Clone git repos
