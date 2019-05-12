@@ -20,7 +20,8 @@ FROM kalilinux/kali-linux-docker
      python \
      python-pip \
      firefox-esr \
-     chromium
+     chromium \
+     openssh-server
 
 # Create known_hosts for git cloning
     RUN mkdir -p /root/.ssh/
@@ -57,4 +58,4 @@ FROM kalilinux/kali-linux-docker
     USER marco
 
 # Indicate we want to expose ports 80 and 443
-    EXPOSE 80/tcp 443/tcp
+    EXPOSE 80/tcp 443/tcp 22
