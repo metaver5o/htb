@@ -19,8 +19,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get i
  wordlists \
  python \
  python-pip \
- firefox \
- chromium-browser
+ firefox-esr \
+ chromium
 
 # Create known_hosts for git cloning
 RUN mkdir -p /root/.ssh/
