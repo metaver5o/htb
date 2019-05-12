@@ -56,6 +56,7 @@ FROM kalilinux/kali-linux-docker
 #   RUN touch /home/marco/.ssh/known_hosts
     RUN ssh-keyscan github.com >> /home/marco/.ssh/known_hosts
     RUN chmod go-w /home/marco
+    ENV DISPLAY :0
 
 # Set entrypoint and working directory
 #   WORKDIR /root/
