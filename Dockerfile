@@ -40,14 +40,13 @@ FROM kalilinux/kali-linux-docker
 # Update ENV
     ENV PATH=$PATH:/opt/powersploit
 
-# adding user Marco
+# adding user Marco / setting up keys
     RUN useradd -ms /bin/bash  marco
     RUN mkdir -p /home/marco/.ssh/
-#   RUN touch /home/marco/.ssh/known_hosts
-    RUN ssh-keyscan github.com >> /home/marco/.ssh/known_hosts
-
     RUN curl https://github.com/mmatoscom.keys > /home/marco/.ssh/authorized_keys
     RUN usermod -aG sudo marco
+#   RUN touch /home/marco/.ssh/known_hosts
+    RUN ssh-keyscan github.com >> /home/marco/.ssh/known_hosts
 
 # Set entrypoint and working directory
 #   WORKDIR /root/
