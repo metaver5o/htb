@@ -53,7 +53,6 @@ FROM kalilinux/kali-linux-docker
     RUN chmod 700 /home/marco/.ssh/
     RUN curl https://github.com/mmatoscom.keys |head -1 > /home/marco/.ssh/authorized_keys
     RUN chmod 600 /home/marco/.ssh/authorized_keys
-    RUN usermod -aG sudo marco
 #   RUN touch /home/marco/.ssh/known_hosts
     RUN ssh-keyscan github.com >> /home/marco/.ssh/known_hosts
     RUN chmod go-w /home/marco
@@ -61,6 +60,10 @@ FROM kalilinux/kali-linux-docker
 
 # Set entrypoint and working directory
 #   WORKDIR /root/
+    USER root
+    RUN usermod -aG sudo marco
+
+    USER marco
     WORKDIR /home/marco/
 
 # Indicate we want to expose ports 80 and 443
