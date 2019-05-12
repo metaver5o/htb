@@ -21,7 +21,10 @@ FROM kalilinux/kali-linux-docker
      python-pip \
      firefox-esr \
      chromium \
-     openssh-server
+     openssh-server \
+     libcanberra-gtk-module \
+     curl \ 
+     sudo 
 
 # Create known_hosts for git cloning
     RUN mkdir -p /root/.ssh/
