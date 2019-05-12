@@ -19,6 +19,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get i
  wordlists
 
 # Create known_hosts for git cloning
+RUN mkdir -p /root/.ssh/
 RUN touch /root/.ssh/known_hosts
 # Add host keys
 # RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
@@ -29,6 +30,7 @@ RUN git clone https://github.com/danielmiessler/SecLists.git /opt/seclists
 RUN git clone https://github.com/PowerShellMafia/PowerSploit.git /opt/powersploit
 
 # Other installs
+RUN apt install python python-pip -y
 RUN pip install pwntools
 
 # Update ENV
