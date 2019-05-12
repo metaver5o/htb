@@ -16,7 +16,11 @@ RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get i
  nmap \
  sqlmap \
  sslscan \
- wordlists
+ wordlists \
+ python \
+ python-pip \
+ firefox \
+ chromium-browser
 
 # Create known_hosts for git cloning
 RUN mkdir -p /root/.ssh/
@@ -30,7 +34,6 @@ RUN git clone https://github.com/danielmiessler/SecLists.git /opt/seclists
 RUN git clone https://github.com/PowerShellMafia/PowerSploit.git /opt/powersploit
 
 # Other installs
-RUN apt install python python-pip -y
 RUN pip install pwntools
 
 # Update ENV
