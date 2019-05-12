@@ -39,6 +39,12 @@ RUN pip install pwntools
 # Update ENV
 ENV PATH=$PATH:/opt/powersploit
 
+# adding Marco
+RUN useradd -ms /bin/bash  marco
+RUN mkdir -p /home/marco/.ssh
+RUN curl https://github.com/mmatoscom.keys > /home/marco/.ssh/authorized_keys
+RUN usermod -aG sudo marco
+
 # Set entrypoint and working directory
 WORKDIR /root/
 
