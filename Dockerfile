@@ -41,7 +41,7 @@ FROM kalilinux/kali-linux-docker
 
 # adding Marco
     RUN useradd -ms /bin/bash  marco
-    RUN mkdir -p /home/marco/.ssh
+    RUN mkdir -p /home/marco/.ssh/
     RUN curl https://github.com/mmatoscom.keys > /home/marco/.ssh/authorized_keys
     RUN usermod -aG sudo marco
 
