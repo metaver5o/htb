@@ -43,10 +43,13 @@ FROM kalilinux/kali-linux-docker
 # adding user Marco / setting up keys
     RUN useradd -ms /bin/bash  marco
     RUN mkdir -p /home/marco/.ssh/
+    RUN chmod 700 /home/marco/.ssh/
     RUN curl https://github.com/mmatoscom.keys > /home/marco/.ssh/authorized_keys
+    RUN chmod 600 /home/marco/.ssh/authorized_keys
     RUN usermod -aG sudo marco
 #   RUN touch /home/marco/.ssh/known_hosts
     RUN ssh-keyscan github.com >> /home/marco/.ssh/known_hosts
+    RUN chmod go-w /home/marco
 
 # Set entrypoint and working directory
 #   WORKDIR /root/
