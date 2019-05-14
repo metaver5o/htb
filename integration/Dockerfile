@@ -49,7 +49,7 @@ RUN apt-get update && apt-get install -y \
 	&& apt-get update && apt-get install -y \
 	google-chrome-stable \
 	--no-install-recommends \
-	&& apt-get purge --auto-remove -y curl \
+	# && apt-get purge --auto-remove -y curl \
 	&& rm -rf /var/lib/apt/lists/*
 
 # # Add chrome user
