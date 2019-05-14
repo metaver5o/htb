@@ -1,5 +1,17 @@
-docker run -tid --name htb --cap-add=NET_ADMIN --device=/dev/net/tun --memory 6g -e DISPLAY=:0 -v /home/marco/repo/htb:/repo  -v /tmp/.X11-unix:/tmp/.X11-unix m4rc0/private:htb bash ;
-docker attach htb
+#!/bin/bash
 
-# ports if needed
-#  -p 80:80 -p 443:443 
+docker run -it \
+	--cap-add=SYS_ADMIN \
+	--cpuset-cpus 0 \
+	--memory 4GB \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	-e DISPLAY=unix:0 \
+	--device /dev/snd \
+	--device /dev/dri \
+	-v /dev/shm:/dev/shm  \
+	--name htb  \
+	--device=/dev/net/tun \
+	-v /home/marco/repo/htb:/repo \
+	m4rc0/private:htb bash;
+docker exec -ti htb google-chrome &
+docker attach htb
