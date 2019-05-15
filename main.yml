@@ -5,12 +5,12 @@
   tasks:
     - name: Ensure Docker image is built from the test Dockerfile.
       docker_image:
-        name: test
-        path: test
+        name: htb
+        path: .
         state: build
 
     - name: Ensure the test container is running.
       docker_container:
-        image: test:latest
-        name: test
+        image: htb:latest
+        name: htb
         state: started

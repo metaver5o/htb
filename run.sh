@@ -1,5 +1,6 @@
 #!/bin/bash
-
+image=htb ;
+docker build -t htb . ;
 docker run -it \
 	--cap-add=SYS_ADMIN \
 	--cap-add=NET_ADMIN \
@@ -15,6 +16,6 @@ docker run -it \
 	-v /home/marco/repo/htb:/repo \
 	--ip6 a:b:c:d::1234 \
 	--net=mynetwork \
-	m4rc0/private:htb bash;
-docker exec -ti htb google-chrome &
+	${image} bash;
+
 docker attach htb
