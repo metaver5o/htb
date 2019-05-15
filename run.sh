@@ -2,6 +2,7 @@
 
 docker run -it \
 	--cap-add=SYS_ADMIN \
+	--cap-add=NET_ADMIN \
 	--cpuset-cpus 0 \
 	--memory 4GB \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -12,6 +13,8 @@ docker run -it \
 	--name htb  \
 	--device=/dev/net/tun \
 	-v /home/marco/repo/htb:/repo \
+	--ip6 a:b:c:d::1234 \
+	--net=mynetwork \
 	m4rc0/private:htb bash;
 docker exec -ti htb google-chrome &
 docker attach htb
