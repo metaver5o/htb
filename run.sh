@@ -1,6 +1,6 @@
 #!/bin/bash
 image=htb ;
-docker build -t htb . ;
+docker build -t ${image} . ;
 docker run -it \
 	--cap-add=SYS_ADMIN \
 	--cap-add=NET_ADMIN \
