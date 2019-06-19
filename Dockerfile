@@ -79,26 +79,28 @@ COPY local.conf /etc/fonts/local.conf
 
 # Update ENV
     ENV PATH=$PATH:/opt/powersploit
+    ENV username marco
+    ENV github-username mmatoscom 
 
 # adding user / setting up keys
-    RUN useradd -ms /bin/bash  marco
-    USER marco
-    RUN mkdir -p /home/marco/.ssh/
-    RUN chmod 700 /home/marco/.ssh/
-    RUN curl https://github.com/mmatoscom.keys |head -1 > /home/marco/.ssh/authorized_keys
-    RUN chmod 600 /home/marco/.ssh/authorized_keys
-#   RUN touch /home/marco/.ssh/known_hosts
-    RUN ssh-keyscan github.com >> /home/marco/.ssh/known_hosts
-    RUN chmod go-w /home/marco
+    RUN useradd -ms /bin/bash  ${username}
+    USER ${username}
+    RUN mkdir -p /home/${username}/.ssh/
+    RUN chmod 700 /home/${username}/.ssh/
+    RUN curl https://github.com/${github-username}.keys |head -1 > /home/${username}/.ssh/authorized_keys
+    RUN chmod 600 /home/${username}/.ssh/authorized_keys
+#   RUN touch /home/${username}/.ssh/known_hosts
+    RUN ssh-keyscan github.com >> /home/${username}/.ssh/known_hosts
+    RUN chmod go-w /home/${username}
     ENV DISPLAY :0
 
 # Set entrypoint and working directory
 #   WORKDIR /root/
     USER root
-    RUN usermod -aG sudo marco
+    RUN usermod -aG sudo ${username}
 
-    USER marco
-    WORKDIR /home/marco/
+    USER ${username}
+    WORKDIR /home/${username}/
 
 # Indicate we want to expose ports 80 and 443
     EXPOSE 22 80/tcp 443/tcp

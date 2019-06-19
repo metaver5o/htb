@@ -14,7 +14,6 @@ docker run -it \
 	--name htb  \
 	--device=/dev/net/tun \
 	-v /home/marco/repo/htb:/repo \
-	--ip6 a:b:c:d::1234 \
 	--net=mynetwork \
 	${image} bash;
 
