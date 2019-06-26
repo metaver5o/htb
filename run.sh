@@ -1,6 +1,7 @@
 #!/bin/bash
+xhost + 127.0.0.1 ;
 image=htb ;
-docker stop ${image} || true && docker rm ${image} || true
+docker stop ${image} || true && docker rm ${image} || true ;
 
 docker build -t ${image} . ;
 docker run -it \
@@ -11,6 +12,4 @@ docker run -it \
 	-e DISPLAY=host.docker.internal:0 \
 	--name htb  \
 	-v /Users/marco_aurelio_matos/repo/htb:/repo \
-	${image} bash;
-
-#docker attach htb
+	${image} bash ;
