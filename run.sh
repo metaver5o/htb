@@ -10,11 +10,11 @@ docker run -it \
 	-e DISPLAY=unix:0 \
 	--device /dev/snd \
 	--device /dev/dri \
-	-v /dev/shm:/dev/shm  \
-	--name htb  \
 	--device=/dev/net/tun \
+	-v /dev/shm:/dev/shm  \
 	-v /home/marco/repo/htb:/repo \
 	--net=mynetwork \
+	--name htb  \
 	${image} bash;
 
 docker attach htb
