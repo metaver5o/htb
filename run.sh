@@ -1,6 +1,7 @@
 #!/bin/bash
 image=htb ;
 docker build -t ${image} . ;
+docker network create mynetwork ;
 docker run -it \
 	--cap-add=SYS_ADMIN \
 	--cap-add=NET_ADMIN \
