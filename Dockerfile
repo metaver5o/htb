@@ -58,18 +58,6 @@ RUN apt-get update && apt-get install -y \
 
 COPY local.conf /etc/fonts/local.conf
 
-# # Autorun chrome
-# ENTRYPOINT [ "google-chrome" ]
-# CMD [ "--user-data-dir=/data" ]
-
-# Create known_hosts for git cloning
-#     RUN mkdir -p /root/.ssh/
-#     RUN touch /root/.ssh/known_hosts
-
-# Add host keys
-# RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
-# RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
-
 # Clone git repos
     RUN git clone https://github.com/danielmiessler/SecLists.git /opt/seclists
     RUN git clone https://github.com/PowerShellMafia/PowerSploit.git /opt/powersploit
