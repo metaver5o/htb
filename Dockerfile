@@ -24,9 +24,9 @@ FROM parrotsec/core
      chromium \
      openssh-server \
      libcanberra-gtk-module \
-     curl \ 
-     sudo \ 
-     vim 
+     curl \
+     sudo \
+     vim
 
 
 # Install Chrome
@@ -80,7 +80,7 @@ COPY local.conf /etc/fonts/local.conf
 # Update ENV
     ENV PATH=$PATH:/opt/powersploit
     ENV username marco
-    ENV github-username mmatoscom 
+    ENV github-username metaver5o
 
 # adding user / setting up keys
     RUN useradd -ms /bin/bash  ${username}
@@ -104,5 +104,4 @@ COPY local.conf /etc/fonts/local.conf
 
 # Indicate we want to expose ports 80 and 443
     EXPOSE 22 80/tcp 443/tcp 1194
-    
-    
+
